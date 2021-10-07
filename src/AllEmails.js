@@ -1,4 +1,4 @@
-import EmailListEntry from './EmailListEntry.js';
+import EmailListEntry from './Emails.js';
 import './EmailList.css';
 
 function EmailList({emails, emailClicked}) {

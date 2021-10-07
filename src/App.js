@@ -1,7 +1,6 @@
 import './App.css';
-import EmailList from './EmailList.js';
-import EmailDetails from './EmailDetails.js';
-import Search from './Search.js';
+import EmailList from './AllEmails.js';
+import EmailDetails from './FullEmail.js';
 import ReplyEmail from './SendEmail.js'
 import React from 'react';
 //specific bootstrap imports
@@ -56,25 +55,12 @@ class App extends React.Component {
     return this.state.searchEmailList;
   }
 
-  searchClicked(emails, searchTarget) {
-    let foundEmailList = emails.filter(email => email.subject.toUpperCase().includes(searchTarget.toUpperCase()));
-    this.setState({ searchEmailList: foundEmailList });
-  }
-
-  searchValueChanged(searchTarget) {
-    if (!searchTarget.trim()) {
-      this.setState({ searchEmailList: null });
-    }
-  }
 
   render() {
     return (
       <div className="fill-window">
         <Container className="email-page">
           <h1>Gmail...but better</h1>
-          <Row>
-            <Search emails={this.state.emailList} searchClicked={this.searchClicked.bind(this)} searchValueChanged={this.searchValueChanged.bind(this)} />
-          </Row>
           <EmailDetails email={this.state.currentEmail} replyButtonClicked={this.replyButtonClicked.bind(this)} toggleEmailDetails={this.toggleEmailDetails.bind(this)} backButtonClicked={this.backButtonClicked.bind(this)} />
           <ReplyEmail toggleReplyEmail={this.toggleReplyEmail.bind(this)} newMessage={this.state.newEmail} toggleEmailDetails={this.toggleEmailDetails.bind(this)}/>
           <Row id="table-title">
@@ -99,5 +85,5 @@ export default App;
 [/] View all of my email messages (subject line + sender)
 [/] View one of my email messages with all of its details
 [] Send an email 
-[/] Search for a specific email by subject
+[] Search for a specific email by subject
 */
